@@ -115,6 +115,7 @@ class LinkedList:
             raise Exception("Enter a valid value to get index.")
 
 
+
     def insert_after_data(self,insert_after,data_to_insert):
 
         itr = self.head
@@ -140,7 +141,7 @@ class LinkedList:
 l1 = LinkedList()
 l1.insert_values(["Veeranna","Kiran","Lohit","Mohin"])
 l1.print()
-l1.insert_after_data("Veeranna","Naveen")
+l1.insert_after_data("Mohin","Naveen")
 l1.print()
 
 
