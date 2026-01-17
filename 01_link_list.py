@@ -1,7 +1,6 @@
-'''
-Implementation of Linked List using Python
-'''
-# Node class with data and pointer
+# Exercise : to add insert after method-- def insert_after_data(self,insert_after,data_to_insert):
+
+
 class Node:
     def __init__(self,data=None,next=None):
         self.data = data
@@ -101,30 +100,51 @@ class LinkedList:
         else:
             raise Exception("Invalid value entered")
         self.delete_at_position(count)
-    
-    
 
-        
+    def get_index_of(self,value):
+        itr = self.head
+        if value == self.head.data:
+            return 0
+        count = 0
+        while itr:
+            if value == itr.data:
+                return count
+            count += 1
+            itr = itr.next
+        else:
+            raise Exception("Enter a valid value to get index.")
+
+
+    def insert_after_data(self,insert_after,data_to_insert):
+
+        itr = self.head
+
+        if insert_after == self.head:
+            node = Node(data_to_insert,self.head.next)
+            self.head.next = node
+            return
+        InsertAfterIndex = self.get_index_of(insert_after)
+        count = 0
+        while itr:
+            if count == self.get_length()-1:
+                node = Node(data_to_insert,None)
+                itr.next = node
+                return
+            if count == InsertAfterIndex:
+                node = Node(data_to_insert,itr.next)
+                itr.next = node
+                return
+            count += 1
+            itr = itr.next
 
 l1 = LinkedList()
-
-l1.insert_values(["Ban","Van","Can","Man"])
-# print(l1.get_length())
-# l1.delete_at_position(0)
-# l1.print()
-# l1.insert_at("dan",1)
+l1.insert_values(["Veeranna","Kiran","Lohit","Mohin"])
+l1.print()
+l1.insert_after_data("Veeranna","Naveen")
 l1.print()
 
-l1.delete_value("Man")
-l1.print()
-
-# l1.insert_at_beginning(10)
-# l1.insert_at_beginning(30)
-# l1.print()
-# l1.insert_at_the_end(40)
-# l1.print()
 
 
 
 
-
+        
