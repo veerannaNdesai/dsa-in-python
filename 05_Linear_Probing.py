@@ -28,6 +28,23 @@ class HashTable:
 
         self.arr[h] = (key,val)
 
+    def __getitem__(self,key):
+        h = self.get_hash(key)
+        start_index = h 
+        
+        while self.arr[h] is not None:
+            if self.arr[h][0] == key:
+                return self.arr[h][1]
+            h = (h + 1) % self.MAX
+            if h == start_index:
+                raise Exception("Invalid key entered.")
+
+
+        raise Exception("Invalid key entered.") 
+        
+        
+
+
         
 
 
@@ -35,7 +52,6 @@ h1 = HashTable()
 h1["march 6"] = 10
 h1['march 17'] = 11
 h1['march 19'] = 11
-print(h1.get_hash("march 18"))
 h1['march 18'] = 11
 h1['march 20'] = 27
 h1['march 21'] = 27
@@ -46,6 +62,7 @@ h1['march 25'] = 27
 # h1['march 26'] = 27
 
 print(h1.arr)
+print(h1['march 6'])
 
 
 
